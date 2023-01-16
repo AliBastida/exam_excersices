@@ -1,37 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotone.c                                           :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abastida <abastida@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 10:42:56 by abastida          #+#    #+#             */
-/*   Updated: 2023/01/10 13:45:15 by abastida         ###   ########.fr       */
+/*   Created: 2023/01/16 12:33:52 by abastida          #+#    #+#             */
+/*   Updated: 2023/01/16 13:17:35 by abastida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <string.h>
 #include <stdio.h>
 
-int	main(int argc, char **argv)
+char	*ft_strcpy(char *s1, char *s2)
 {
-	int i;
+	int i; 
 
 	i = 0;
-	if(argc == 2)
+	while(s2[i])
 	{
-		while(argv[1][i])
-		{
-			if(argv[1][i] == 'z' || argv[1][i] == 'Z')
-				argv[1][i] = argv[1][i] - 25;
-			else if((argv[1][i] >= 'a' && argv[1][i] <= 'z') || 
-					(argv[1][i] >= 'A' && argv[1][i] <= 'Z'))
-				argv[1][i] = argv[1][i] + 1;
-			write(1, &argv[1][i], 1);
-			i++;
-		}
+		s1[i] = s2[i];
+		i++;
 	}
-	write(1, "\n", 1);
-	return (0);
-
+	s1[i] = '\0';
+	return(s1);
 }
+
+/*int main(void)
+{
+	char src[15] = "Hola";
+	char dst[15] = " ";
+	const char src2[15] = "Hola";
+	char *result_mine;
+	char *result_theirs;
+
+	result_mine = ft_strcpy(dst, src);
+	result_theirs = strcpy(dst, src2);
+
+	printf("My strcpy: %s\n", result_mine);
+	printf("Theirs: %s\n", result_theirs);
+
+	return(0);
+}*/
