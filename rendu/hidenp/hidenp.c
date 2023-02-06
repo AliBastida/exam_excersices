@@ -1,36 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_and_replace.c                               :+:      :+:    :+:   */
+/*   hidenp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abastida <abastida@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 09:15:21 by abastida          #+#    #+#             */
-/*   Updated: 2023/02/06 09:50:36 by abastida         ###   ########.fr       */
+/*   Created: 2023/02/06 17:33:00 by abastida          #+#    #+#             */
+/*   Updated: 2023/02/06 19:35:38 by abastida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <unistd.h>
+#include <stdio.h>
 
-void	search_and_replace(char *str, char a, char b)
+void	hidenp(char *s1, char *s2)
 {
 	int i = 0;
-	while(str[i])
+	int j = 0;
+	while(s2[j] && s1[i])
 	{
-		if(str[i] == a)
-			str[i] = b;
-		write(1,&str[i], 1);
-		i++;
+		if(s1[i] == s2[j])
+		{
+			i++;
+		//	write(1, &s2[j], 1);
+		}
+		j++;
 	}
+	if(s1[i] == '\0')
+		write(1, "1", 1);
+	else
+		write(1, "0", 1);
 }
+
 
 int	main(int ac, char **av)
 {
-	if(ac == 4)
+	if(ac == 3)
 	{
-		if(av[1] && !av[2][1] && !av[3][1])
-			search_and_replace(av[1],av[2][0],av[3][0]);
+		if(av)
+			hidenp(av[1], av[2]);
 	}
 	write(1, "\n", 1);
 	return(0);
