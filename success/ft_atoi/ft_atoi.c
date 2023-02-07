@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_print.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abastida <abastida@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 12:31:23 by abastida          #+#    #+#             */
-/*   Updated: 2023/01/24 12:31:23 by abastida         ###   ########.fr       */
+/*   Created: 2023/02/07 11:29:44 by abastida          #+#    #+#             */
+/*   Updated: 2023/02/07 11:29:44 by abastida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-void	rev_print(char *str)
+int	ft_atoi(const char *str)
 {
-	int i = 0;
-
-	while(str[i])
+	int neg = 1;
+	int num = 0;
+	while(*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if(*str == '-')
+		neg = neg * -1;
+	if(*str == '-' || *str == '+')
+		str++;
+	while(*str >= '0' && *str <= '9')
 	{
-		i++;
+		num = (num * 10) + (*str - '0');
+		str++;
 	}
-	while(i > 0)
-	{
-		i--;
-		write(1, &str[i], 1);
-	}
-
+	return(num * neg);
 }
 
-int	main(int ac, char **av)
-{
-	if(ac == 2)
-	{
-		rev_print(av[1]);
-	}
-	write(1, "\n", 1);
-	return(0);
-
-}

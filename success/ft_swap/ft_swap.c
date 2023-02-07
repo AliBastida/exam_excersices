@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_print.c                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abastida <abastida@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 12:31:23 by abastida          #+#    #+#             */
-/*   Updated: 2023/01/24 12:31:23 by abastida         ###   ########.fr       */
+/*   Created: 2023/01/31 11:05:53 by abastida          #+#    #+#             */
+/*   Updated: 2023/01/31 11:05:53 by abastida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 #include <stdio.h>
+#include <unistd.h>
 
-void	rev_print(char *str)
+void	ft_swap(int *a, int *b)
 {
-	int i = 0;
+	int tmp = 0;
 
-	while(str[i])
-	{
-		i++;
-	}
-	while(i > 0)
-	{
-		i--;
-		write(1, &str[i], 1);
-	}
-
+		tmp = *a;
+		*a = *b;
+		*b = tmp;
 }
 
-int	main(int ac, char **av)
+/*int main()
 {
-	if(ac == 2)
-	{
-		rev_print(av[1]);
-	}
-	write(1, "\n", 1);
+	int a = 289;
+	int b = 174;
+
+	ft_swap(&a, &b);
+	printf("a%d || b%d\n", a, b);
 	return(0);
-
 }
+*/

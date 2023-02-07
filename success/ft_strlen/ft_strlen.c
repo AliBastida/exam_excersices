@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abastida <abastida@student.42.fr>          +#+  +:+       +#+        */
+/*   By: abastida <abastida@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 13:40:23 by abastida          #+#    #+#             */
-/*   Updated: 2022/10/17 13:40:26 by abastida         ###   ########.fr       */
+/*   Created: 2023/01/30 14:07:31 by abastida          #+#    #+#             */
+/*   Updated: 2023/01/30 14:07:31 by abastida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdio.h>
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-  int i;
-
-  i = 0;
-  while (str[i])
-    i++;
-  return i;
+	int i = 0;
+	while(str[i])
+		i++;
+	return(i);
 }
