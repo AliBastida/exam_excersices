@@ -16,6 +16,8 @@
 void	expand_str(char *str)
 {
 	int i = 0;
+	while(str[i] == ' ' || str[i] == '	')
+		i++;
 	while(str[i])
 	{
 		if((str[i] == ' ' || str[i] == '	') && ((str[i + 1] >= 65 && str[i + 1] <= 90) || (str[i + 1] >= 97 && str[i + 1] <= 123)))

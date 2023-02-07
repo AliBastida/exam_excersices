@@ -14,7 +14,7 @@
 
 int	is_power_of_2(unsigned int n)
 {
-	unsigned int num = 1;
+	unsigned int num = 2;
 
 	while (num <= n)
 	{
