@@ -34,30 +34,53 @@ int	ft_strlen(char *s)
 		i++;
 	return (i);
 }
+
+int	look_for_double(char *str, char c, int i)
+{
+	while (i >= 0)
+	{
+		if (c == str[i])
+			return (0);
+		i--;
+	}
+	return (1);
+}
+
 void inter(char *s1, char *s2)
 {
-	int i = -1;
+	int i = 0;
 	int j;
 	int aux_counter = 0;
 	char aux[126] = {0};
 
-	if (i < ft_strlen(s1) - 1)
+	while(s1[i])
 	{
-		j = -1;
-		while (j < ft_strlen(s2) - 1)
+		j = 0;
+		if (look_for_char(s2, s1[i], j) == 1)
 		{
-			if((look_for_char(s1, s1[i], i) == 1) && (look_for_char(s2, s1[i], j) == 1))
-			{
-				aux[aux_counter++] = s1[i];
-				printf("aux %s\n", aux);
-			}
-			++i;
-			++j;
-			printf("s1[i]:%c\n", s1[i]);
-			printf("s2[j]%c\n", s2[j]);
+			aux[aux_counter++] = s1[i];
+			printf("aux %s\n", aux);
 		}
+		++j;
+		++i;
+		printf("s1[i]:%c\n", s1[i]);
+		printf("s2[j]%c\n", s2[j]);
+	}
+	aux_counter = 0;
+	while (aux[aux_counter])
+	{
+		if (look_for_double(aux, aux[aux_counter], aux_counter - 1) == 1)
+		{	
+			//printf("aux final:%c\n", aux[aux_counter]);
+			write(1, &aux[aux_counter], 1);
+		}
+		aux_counter++;
 	}
 }
+
+
+
+
 
 int	main(int ac, char **av)
 {
