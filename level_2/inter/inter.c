@@ -19,7 +19,7 @@ int	look_for_double(char *s1, char c, int len)
 	{
 		if(s1[len] == c)
 			return (true);
-		len++;
+		len--;
 	}
 	return(false);
 }
@@ -42,13 +42,13 @@ void	inter(char *s1, char *s2)
         }
    		i++;
     }
-    s1++;
+	s1++;
   }
   saved_counter = 0;
   while(saved[saved_counter])
   {
-	if (look_for_double(saved, saved[saved_counter], saved_counter - 1) == 0)
-	  printf("%c\n", saved[saved_counter]);
+	if (look_for_double(saved, saved[saved_counter], saved_counter - 1) == false)
+		printf("%c", saved[saved_counter]);
 	saved_counter++;
   }
 }
