@@ -3,29 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ulstr.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abastida <abastida@student.42barcel>       +#+  +:+       +#+        */
+/*   By: abastida <abastida@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 12:21:49 by abastida          #+#    #+#             */
-/*   Updated: 2023/05/04 12:21:49 by abastida         ###   ########.fr       */
+/*   Created: 2023/05/21 12:07:44 by abastida          #+#    #+#             */
+/*   Updated: 2023/05/21 12:14:49 by abastida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ulstr(char *str)
+void ulstr(char *str)
 {
 	int i = 0;
 	while (str[i])
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
+		if(str[i]>= 'a' && str[i] <= 'z')
 			str[i] = str[i] - 32;
-		else if (str[i] >= 'A' && str[i] <= 'Z')
+		else if(str[i] >= 'A' && str[i] <= 'Z')
 			str[i] = str[i] + 32;
 		write(1, &str[i], 1);
 		i++;
 	}
 }
-int	main(int ac, char **av)
+
+int main(int ac, char **av)
 {
 	if (ac == 2)
 		ulstr(av[1]);
