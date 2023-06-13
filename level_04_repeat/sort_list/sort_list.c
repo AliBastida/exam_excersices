@@ -13,25 +13,26 @@
 #include <unistd.h>
 #include <stdio.h>
 #include "list.h"
+#include <stdlib.h>
 
 t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
 {
 	t_list *node = lst;
 	int aux;
-	while (node->next)
+	while (lst->next)
 	{
-		if (cmp(node->data, node->next->data) == 0)
+		if (cmp(lst->data, lst->next->data) == 0)
 		{
-			aux = node->data;
-			node->data = node->next->data;
-			node->next->data = aux;
-			node = lst;
+			aux = lst->data;
+			lst->data = lst->next->data;
+			lst->next->data = aux;
+			lst = node;
 		}
 		else
-			node = node->next;
+			lst = lst->next;
 	}
-	node = lst;
-	return (node);
+	lst = node;
+	return (lst);
 }
 
 
@@ -40,4 +41,37 @@ t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
 int ascending(int a, int b)
 {
 	return (a <= b);
+}
+
+t_list *create_node()
+{
+	t_list *new;
+
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (NULL);
+	new->next = NULL;
+	return (new);
+}
+
+int main()
+{
+	t_list *node1 = create_node();
+	t_list *node2 = create_node();
+	t_list *node3 = create_node();
+
+	node1->next = node2;
+	node2->next = node3;
+
+	node1->data = 5;
+	node2->data = 3;
+	node3->data = 7;
+
+	t_list *res = sort_list(node1, ascending);
+	while(res)
+	{
+		printf("%d", res->data);
+		res = res->next;
+	}
+	return (0);
 }
