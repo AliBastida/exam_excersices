@@ -6,7 +6,7 @@
 /*   By: abastida <abastida@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:14:51 by abastida          #+#    #+#             */
-/*   Updated: 2023/12/02 17:30:07 by abastida         ###   ########.fr       */
+/*   Updated: 2023/12/04 11:11:58 by abastida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,14 @@ char *cut_line(char *resto)
 	int i = 0;
 	int j = 0;
 	char *new_resto;
+
+	while(resto[i] && resto[i] != '\n')
+		i++;
 	if(!resto[i])
 	{
 		free(resto);
 		return(NULL);
 	}
-	while(resto && resto[i] != '\n')
-		i++;
 	new_resto = malloc(sizeof(char) * (ft_strlen(resto) - i + 1));
 	if(!new_resto)
 		return(NULL);
@@ -105,6 +106,29 @@ char *cut_line(char *resto)
 	free(resto);
 	return(new_resto);
 }
+/*
+char *cut_line(char *resto)
+{
+	int i = 0, j = 0;
+	char *res;
+
+	while (resto[i] && resto[i] != '\n')
+		i++;
+	if (!resto[i])
+	{
+		free(resto);
+		return (NULL);
+	}
+	if (!(res = malloc((ft_strlen(resto) - i + 1))))
+		return (NULL);
+	i++;
+	while (resto[i])
+		res[j++] = resto[i++];
+	res[j] = '\0';
+	free(resto);
+	return (res);
+}
+*/
 
 char *get_next_line(int fd)
 {
